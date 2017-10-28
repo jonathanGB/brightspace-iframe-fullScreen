@@ -1,12 +1,9 @@
-const observed = document.getElementById("ContentView");
-const obs = new MutationObserver(mutatationCB);
-obs.observe(observed, {
-  childList: true,
-  subtree: true,
-});
+"use strict";
 
-function mutatationCB() {
-  const iframe = document.querySelector('iframe');
+// try to turn iframe fullScreen
+// return true if successful, otherwise false
+function fullScreenify(_, obs) {
+  const iframe = document.querySelector("iframe");
 
   if (iframe) {
     iframe.style.position = "absolute";
@@ -16,7 +13,22 @@ function mutatationCB() {
     iframe.style.height = "100%";
     iframe.style.zIndex = "1000";
     iframe.focus();
-    
-    obs.disconnect();
+
+    if (obs) {
+      obs.disconnect();
+    }
+
+    return true;
   }
+
+  return false;
+}
+
+if (!fullScreenify()) {
+  const observed = document.getElementById("ContentView");
+  const obs = new MutationObserver(fullScreenify);
+  obs.observe(observed, {
+    childList: true,
+    subtree: true,
+  });
 }
