@@ -15,7 +15,8 @@ function mutatationCB() {
     iframe.style.width = "100%";
     iframe.style.height = "100%";
     iframe.style.zIndex = "1000";
-
+    iframe.focus();
+    
     obs.disconnect();
   }
 }
