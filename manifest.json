@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "brightspace-iframe-fullScreen",
+  "version": "1.0",
+  "description": "I want lecture slides to take the full window, so I made an extension to do just that",
+  "icons": {
+    "48": "icons/fullscreen.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://uottawa.brightspace.com/d2l/le/content/*/viewContent/*/View"],
+      "js": ["fullScreenify.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
