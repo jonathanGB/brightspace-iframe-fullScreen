@@ -24,6 +24,11 @@ function fullScreenify(_, obs) {
   return false;
 }
 
+
+/* try to make fullScreen right away; if iframe non-existent, wait for MutationObserver
+ -> Chrome has iframe at first — so it doesn't need a MutationObserver
+ -> Firefox doesn't have the iframe right away — so it needs a MutationObserver
+*/
 if (!fullScreenify()) {
   const observed = document.getElementById("ContentView");
   const obs = new MutationObserver(fullScreenify);
