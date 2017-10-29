@@ -3,7 +3,7 @@
 // try to turn iframe fullScreen
 // return true if successful, otherwise false
 function fullScreenify(_, obs) {
-  const iframe = document.querySelector("iframe");
+  const iframe = document.querySelector("iframe.d2l-fileviewer-rendered-pdf");
 
   if (iframe) {
     iframe.style.position = "absolute";
