@@ -6,13 +6,21 @@ function fullScreenify(_, obs) {
   const iframe = document.querySelector("iframe.d2l-fileviewer-rendered-pdf");
 
   if (iframe) {
-    iframe.style.position = "absolute";
-    iframe.style.top = "0";
-    iframe.style.left = "0";
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.zIndex = "1000";
-    iframe.focus();
+    const src = iframe.src;
+    iframe.src = "";
+
+    const newIframe = document.createElement("iframe");
+    document.body.style.overflow = "hidden";
+    document.body.appendChild(newIframe);
+    newIframe.src = src;
+    newIframe.style.position = "absolute";
+    newIframe.style.top = "0";
+    newIframe.style.left = "0";
+    newIframe.style.width = "100%";
+    console.log(window.innerHeight)
+    newIframe.style.height = "100%"//`${window.innerHeight}px`;
+    newIframe.style.zIndex = "1000";
+    newIframe.focus();
 
     if (obs) {
       obs.disconnect();
