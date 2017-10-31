@@ -34,6 +34,6 @@ if (!fullScreenify()) {
   const obs = new MutationObserver(fullScreenify);
   obs.observe(observed, {
     childList: true,
-    subtree: true,
+    subtree: true
   });
 }
